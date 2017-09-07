@@ -1,0 +1,172 @@
+body {
+	font-family: Trebuchet MS;
+	background-color: white;
+	margin: 2.5%;
+	position: relative;
+
+}
+table {
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+	overflow: hidden;
+	text-align: left;
+	background-color: f8f8f8;
+
+/*  The below is responsible for collapsing table when using app on mobile device  */
+	table-layout: fixed;
+	width: 100%;
+	border-collapse: collapse;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+a:hover {
+	background-color: gainsboro;
+	justify-content: space-between;
+	padding: 7px 10px;
+	text-align: center;
+	font-weight: 600;
+	width: auto;
+	margin: -10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	overflow: hidden;
+	text-decoration: none;
+}
+
+/*** flex stuff ***/
+
+.parent {
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	overflow: hidden;
+	background-color: darkcyan;
+	display: flex;
+	 /*y-axis defined*/
+	align-items: baseline;
+}
+.menu_item{
+	background-color: hide;
+	justify-content: space-between;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-radius: 3px;
+	margin: 5px;
+	padding: 10px 0px 0px 14px;
+	text-align: left;
+	font-weight: 500px;
+}
+
+/*** end ***/
+
+/* Although there are no images in the app, this is added to secure correctness when sizing down browser to mobile
+   in the event that someone does at an image to the app  */
+img {
+	max-width: 100%;
+}
+header {
+	font-size: xx-large;
+	color: 82ccd6;
+}
+footer {
+	color: red;
+	background-color: whitesmoke;
+	text-align: center;
+}
+ol {
+	color: black;
+}
+thead {
+	background-color: gainsboro;
+	font-size: 90%;
+	font-weight: 500px;
+}
+thead:nth-child(2n) {
+	color: lightcyan;
+}
+th {
+	color: black;
+	text-align: left;
+	padding: 7px 7px 7px 15px;
+}
+th:nth-child(1) {
+	width:5%;
+}
+th:nth-child(2) {
+	width:5%;
+}
+th:nth-child(3) {
+	width:5%
+}
+th:last-child {
+	width:75%;
+}
+td {
+	padding:15px 10px 15px 15px;
+}
+@media print {
+	boxy {
+		background: none;
+	}
+}
+@media
+only screen and (max-width: 960px),
+(min-device-width: 115px) and (max-device-width: 1080px) {
+	table, thead, tbody, th, td, tr {
+		display:block;
+	}
+
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	.menu_item:before {
+		font-size: 80%;
+	}
+	td {
+		border: none;
+		border-bottom: 1px solid white;
+		position: relative;
+		padding-left: 30%;
+	}
+
+	td:before {
+		position: absolute;
+		top: 6px;
+		left: 6px;
+		width: 15%;
+		padding-right: 10px;
+		white-space: pre-line;
+		font-size: 76%
+	}
+
+	a:hover {
+		background-color: whitesmoke;
+		padding: 7px 10px;
+		color: black;
+	}
+
+	tr:nth-child(odd) {
+		background-color: eff4f4;
+	}
+
+	td:nth-of-type(1):before { content: "Total (s)"; }
+	td:nth-of-type(2):before { content: "Calls"; }
+	td:nth-of-type(3):before { content: "Mean (ms)"; }
+	td:nth-of-type(4):before { content: "Standard Deviation (ms)"; }
+	td:nth-of-type(5):before { content: "Query"; }
+
+	table.mean-time td:nth-of-type(1):before { content: "Mean (ms)"; }
+	table.mean-time td:nth-of-type(2):before { content: "Total (s)"; }
+	table.mean-time td:nth-of-type(3):before { content: "Standard Deviation (ms)"; }
+	table.mean-time td:nth-of-type(4):before { content: "Query"; }
+
+
+	table.most-frequent td:nth-of-type(1):before { content: "Calls"; }
+	table.most-frequent td:nth-of-type(2):before { content: "Total (s)"; }
+	table.most-frequent td:nth-of-type(3):before { content: "Mean (ms)"; }
+
+}

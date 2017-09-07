@@ -1,0 +1,4 @@
+---
+pgperformance:
+  db_uri: postgres://user:pass@mydb.com/mydb
+

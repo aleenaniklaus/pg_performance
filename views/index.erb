@@ -1,0 +1,20 @@
+<header role="banner">Mean Time</header>
+	<%= erb :menu %>
+<table class="mean-time">
+	<thead>
+	<tr>
+		<th>Mean (ms)</th>
+		<th>Total (s)</th>
+		<th>Standard Deviation (ms)</th>
+		<th>Query</th>
+	</tr>
+	</thead>
+	<% mean_time_rows.each do |row| %>
+			<tr>
+				<td><%= (row[:mean_time].to_f).round(3) %></td>
+				<td><%= (row[:total_time].to_f / 1000).to_i %></td>
+				<td><%= (row[:stddev_time].to_f).round(3)%></td>
+				<td><%= sql(row[:query]) %></td>
+			</tr>
+	<% end %>
+</table>
