@@ -15,7 +15,7 @@
 * _Sinatra_
 
 ### License 
-This software may be licenced under MIT license
+This software is licensed under the [MIT license](LICENSE.txt)
 
 
-Copyright(c) 2017 Aleena Watson Cozy.co
+Copyright(c) 2017 Aleena Watson & Cozy Services Ltd.
