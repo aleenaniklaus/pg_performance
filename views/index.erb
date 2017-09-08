@@ -11,9 +11,9 @@
 	</thead>
 	<% mean_time_rows.each do |row| %>
 			<tr>
-				<td><%= (row[:mean_time].to_f).round(3) %></td>
+				<td><%= (row[:mean_time].to_f).round(2) %></td>
 				<td><%= (row[:total_time].to_f / 1000).to_i %></td>
-				<td><%= (row[:stddev_time].to_f).round(3)%></td>
+				<td><%= (row[:stddev_time].to_f).round(2)%></td>
 				<td><%= sql(row[:query]) %></td>
 			</tr>
 	<% end %>

@@ -2,17 +2,23 @@ GEM
   remote: https://rubygems.org/
   specs:
     backports (3.8.0)
+    coderay (1.1.2)
     configurability (3.2.0)
       loggability (~> 0.12)
     loggability (0.14.0)
-    multi_json (1.12.1)
-    mustermann (1.0.0)
+    method_source (0.8.2)
+    multi_json (1.12.2)
+    mustermann (1.0.1)
     pg (0.21.0)
+    pry (0.10.4)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
     rouge (2.2.1)
-    sequel (4.49.0)
+    sequel (5.0.0)
     sinatra (2.0.0)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -27,6 +33,7 @@ GEM
       tilt (>= 1.3, < 3)
     sinatra-reloader (1.0)
       sinatra-contrib
+    slop (3.6.0)
     tilt (2.0.8)
 
 PLATFORMS
@@ -35,6 +42,7 @@ PLATFORMS
 DEPENDENCIES
   configurability
   pg
+  pry
   rouge
   sequel
   sinatra

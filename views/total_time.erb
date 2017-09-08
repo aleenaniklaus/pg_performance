@@ -4,8 +4,8 @@
   <thead>
     <tr>
       <th class="total-time">Total (s)</th>
-      <th>Calls</th>
       <th>Mean (ms)</th>
+      <th>Calls</th>
       <th>Standard Deviation (ms)</th>
       <th>Query</th>
     </tr>
@@ -13,9 +13,9 @@
   <% total_time_rows.each do |row| %>
       <tr>
         <td><%= (row[:total_time].to_f / 1000).to_i %></td>
+        <td><%= (row[:mean_time].to_f).round(2) %></td>
         <td><%= row[:calls].to_i %></td>
-        <td><%= (row[:mean_time].to_f).round(3) %></td>
-        <td><%= (row[:stddev_time].to_f).round(3) %></td>
+        <td><%= (row[:stddev_time].to_f).round(2) %></td>
         <td><%= sql(row[:query]) %></td>
       </tr>
 <% end %>

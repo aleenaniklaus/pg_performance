@@ -3,15 +3,13 @@ body {
 	background-color: white;
 	margin: 2.5%;
 	position: relative;
-
 }
 table {
 	border-bottom-right-radius: 3px;
 	border-bottom-left-radius: 3px;
 	overflow: hidden;
-	text-align: left;
 	background-color: f8f8f8;
-
+	font-size: 90%;
 /*  The below is responsible for collapsing table when using app on mobile device  */
 	table-layout: fixed;
 	width: 100%;
@@ -79,7 +77,6 @@ ol {
 }
 thead {
 	background-color: gainsboro;
-	font-size: 90%;
 	font-weight: 500px;
 }
 thead:nth-child(2n) {
@@ -88,6 +85,7 @@ thead:nth-child(2n) {
 th {
 	color: black;
 	text-align: left;
+	font-size: 80%;
 	padding: 7px 7px 7px 15px;
 }
 th:nth-child(1) {

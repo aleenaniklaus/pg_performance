@@ -58,36 +58,36 @@ class PGPerformance < Sinatra::Base
 	end
 
 	def total_time_rows
-		total_time_ds =PGPerformance.db[:pg_stat_statements].
+		total_time_ds = PGPerformance.db[:pg_stat_statements].join( :pg_database, oid: :dbid ).
+			where( datname: 'cozy' ).
 			exclude(query: '<insufficient privilege>').
 			exclude { query.like('%"pg_%') }.
-			group_by(:query).
 			order_by { total_time.desc }.
 			limit( 20 ).
-			select { [sum(calls).as(:calls), sum(total_time).as(:total_time), avg(mean_time).as(:mean_time), sum(:stddev_time).as(:stddev_time), query] }
+			select { [calls, total_time, mean_time, stddev_time, query] }
 		return total_time_ds.all
 	end
 
 	def mean_time_rows
-		mean_time_ds = PGPerformance.db[:pg_stat_statements].
+		mean_time_ds = PGPerformance.db[:pg_stat_statements].join( :pg_database, oid: :dbid ).
+		  where( datname: 'cozy').
 			exclude(query: '<insufficient privilege>').
 			exclude { query.like('%"pg_%') }.
-			group_by(:query).
 			order_by { mean_time.desc }.
 			limit( 20 ).
-			select { [ avg(mean_time).as(:mean_time), sum(total_time).as(:total_time), sum(stddev_time).as(:stddev_time), query] }
+			select { [ mean_time, total_time, stddev_time, query] }
 		return mean_time_ds.all
 	end
 
 	def most_frequent_rows
-		most_frequent_rows_ds = PGPerformance.db[:pg_stat_statements].
+		most_frequent_rows_ds = PGPerformance.db[:pg_stat_statements].join( :pg_database, oid: :dbid ).
+		  where( datname: 'cozy').
 			exclude(query: '<insufficient privilege>'). 
 			exclude(query: 'COMMIT').
 			exclude(query: 'BEGIN').
-			group_by(:query).
 			order_by { calls.desc }.
 			limit( 20 ).
-			select { [sum(calls).as(:calls), avg(:mean_time).as(:mean_time), sum(total_time).as(:total_time), sum(:stddev_time).as(:stddev_time), query] }
+			select { [calls, mean_time, total_time, stddev_time, query] }
 		return most_frequent_rows_ds.all
 	end
 
