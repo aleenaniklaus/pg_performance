@@ -1,4 +1,4 @@
 ---
 pgperformance:
   db_uri: postgres://user:pass@mydb.com/mydb
-
+  target_db: 'your_db_name'

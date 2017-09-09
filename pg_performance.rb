@@ -11,15 +11,15 @@ require 'configurability'
 class PGPerformance < Sinatra::Base
 	extend Configurability
 
-	config_key :pgperformance
-
-	def self::configure( configsection )
-		@db = Sequel.connect(configsection[:db_uri])
+	configurability( :pgperformance ) do
+		setting :db_uri
+		setting :target_db
 	end
 
 	def self::db
-		return @db
+		return @db ||= Sequel.connect( self.db_uri )
 	end
+
 
 	Sinatra::Base.configure do
 		register Sinatra::Reloader
@@ -44,7 +44,6 @@ class PGPerformance < Sinatra::Base
 		erb :most_frequent, :layout => :default, locals: {
 				most_frequent_rows: most_frequent_rows
 		}
-
 	end
 
 	helpers do
@@ -58,10 +57,7 @@ class PGPerformance < Sinatra::Base
 	end
 
 	def total_time_rows
-		total_time_ds = PGPerformance.db[:pg_stat_statements].join( :pg_database, oid: :dbid ).
-			where( datname: 'cozy' ).
-			exclude(query: '<insufficient privilege>').
-			exclude { query.like('%"pg_%') }.
+		total_time_ds = self.relevant_stats_dataset.
 			order_by { total_time.desc }.
 			limit( 20 ).
 			select { [calls, total_time, mean_time, stddev_time, query] }
@@ -69,10 +65,7 @@ class PGPerformance < Sinatra::Base
 	end
 
 	def mean_time_rows
-		mean_time_ds = PGPerformance.db[:pg_stat_statements].join( :pg_database, oid: :dbid ).
-		  where( datname: 'cozy').
-			exclude(query: '<insufficient privilege>').
-			exclude { query.like('%"pg_%') }.
+		mean_time_ds = self.relevant_stats_dataset.
 			order_by { mean_time.desc }.
 			limit( 20 ).
 			select { [ mean_time, total_time, stddev_time, query] }
@@ -80,15 +73,20 @@ class PGPerformance < Sinatra::Base
 	end
 
 	def most_frequent_rows
-		most_frequent_rows_ds = PGPerformance.db[:pg_stat_statements].join( :pg_database, oid: :dbid ).
-		  where( datname: 'cozy').
-			exclude(query: '<insufficient privilege>'). 
-			exclude(query: 'COMMIT').
-			exclude(query: 'BEGIN').
+		most_frequent_rows_ds = self.relevant_stats_dataset.
 			order_by { calls.desc }.
 			limit( 20 ).
 			select { [calls, mean_time, total_time, stddev_time, query] }
 		return most_frequent_rows_ds.all
+	end
+
+	def relevant_stats_dataset
+		return PGPerformance.db[:pg_stat_statements].join( :pg_database, oid: :dbid ).
+				where( datname: PGPerformance.target_db ).
+				exclude(query: '<insufficient privilege>').
+				exclude(query: 'COMMIT').
+				exclude(query: 'BEGIN').
+				exclude { query.like('%"pg_%') }
 	end
 
 end
