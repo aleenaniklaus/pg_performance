@@ -46,6 +46,18 @@ class PGPerformance < Sinatra::Base
 		}
 	end
 
+	get '/all-active' do
+		erb :all_active, :layout => :default, locals: {
+				all_active_rows: all_active_rows
+		}
+	end
+
+	get '/long-running' do
+		erb :long_running, :layout => :default, locals: {
+				long_running_rows: long_running_rows
+		}
+	end
+
 	helpers do
 
 		def sql(sql)
@@ -78,6 +90,25 @@ class PGPerformance < Sinatra::Base
 			limit( 20 ).
 			select { [calls, mean_time, total_time, stddev_time, query] }
 		return most_frequent_rows_ds.all
+	end
+
+	def all_active_rows
+		all_active_rows_ds = self.activity_stats_dataset
+		return all_active_rows_ds.all
+	end
+
+	def long_running_rows
+		long_running_rows_ds = self.activity_stats_dataset.
+				where { query_start < Time.now - 1 }
+		return long_running_rows_ds.all
+	end
+
+	def activity_stats_dataset
+		return PGPerformance.db[:pg_stat_activity].
+				where( datname: PGPerformance.target_db ).
+				where( state: 'active' ).
+				limit( 20 ).
+				select { [ application_name, query_start, state, query ] }
 	end
 
 	def relevant_stats_dataset

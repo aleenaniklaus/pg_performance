@@ -1,0 +1,20 @@
+<header role="banner">Long Running</header>
+  <%= erb :menu %>
+<table class="long-running">
+  <thead>
+    <tr>
+      <th>Application Name</th>
+      <th>Start Time</th>
+      <th>State</th>
+      <th>Query</th>
+    </tr>
+  </thead>
+  <% long_running_rows.each do |row| %>
+      <tr>
+        <td><%= row[:application_name] %></td>
+        <td><%= row[:query_start] %></td>
+        <td><%= row[:state] %></td>
+        <td><%= sql(row[:query]) %></td>
+      </tr>
+  <% end %>
+</table>

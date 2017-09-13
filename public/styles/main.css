@@ -4,6 +4,7 @@ body {
 	margin: 2.5%;
 	position: relative;
 }
+
 table {
 	border-bottom-right-radius: 3px;
 	border-bottom-left-radius: 3px;
@@ -15,6 +16,7 @@ table {
 	width: 100%;
 	border-collapse: collapse;
 }
+
 a {
 	text-decoration: none;
 	color: black;
@@ -23,8 +25,8 @@ a:hover {
 	background-color: gainsboro;
 	justify-content: space-between;
 	padding: 7px 10px;
-	text-align: center;
-	font-weight: 600;
+	text-align: start;
+	font-weight: 500;
 	width: auto;
 	margin: -10px;
 	border-top-left-radius: 10px;
@@ -42,11 +44,12 @@ a:hover {
 	background-color: darkcyan;
 	display: flex;
 	 /*y-axis defined*/
-	align-items: baseline;
+	align-items: flex-start;
 }
+
 .menu_item{
 	background-color: hide;
-	justify-content: space-between;
+	justify-content: flex-start;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	border-radius: 3px;
@@ -63,25 +66,32 @@ a:hover {
 img {
 	max-width: 100%;
 }
+
 header {
 	font-size: xx-large;
 	color: 82ccd6;
 }
+
 footer {
 	color: red;
 	background-color: whitesmoke;
 	text-align: center;
+	font-size: 75%;
 }
+
 ol {
 	color: black;
 }
+
 thead {
 	background-color: gainsboro;
 	font-weight: 500px;
 }
+
 thead:nth-child(2n) {
 	color: lightcyan;
 }
+
 th {
 	color: black;
 	text-align: left;
@@ -100,9 +110,13 @@ th:nth-child(3) {
 th:last-child {
 	width:75%;
 }
+
 td {
 	padding:15px 10px 15px 15px;
+	overflow-wrap: break-word;
+	font-size: 90%;
 }
+
 @media print {
 	boxy {
 		background: none;
@@ -115,15 +129,39 @@ only screen and (max-width: 960px),
 		display:block;
 	}
 
+	a:hover {
+		background-color: gainsboro;
+		justify-content: space-between;
+		padding: 7px 10px;
+		text-align: start;
+		font-weight: 500;
+		width: auto;
+		margin: -10px;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+		overflow: hidden;
+		text-decoration: none;
+		display: block;
+	}
+
 	thead tr {
 		position: absolute;
 		top: -9999px;
 		left: -9999px;
 	}
 
-	.menu_item:before {
-		font-size: 80%;
+	.menu_item {
+		font-size: 75%;
+		text-align: left;
+		margin: 5px 0px 0px 0px;
 	}
+
+	/*#div2 {*/
+		/*border: none;*/
+		/*margin-bottom: 12px;*/
+		/*overflow-x: auto;*/
+	/*}*/
+
 	td {
 		border: none;
 		border-bottom: 1px solid white;
@@ -139,12 +177,6 @@ only screen and (max-width: 960px),
 		padding-right: 10px;
 		white-space: pre-line;
 		font-size: 76%
-	}
-
-	a:hover {
-		background-color: whitesmoke;
-		padding: 7px 10px;
-		color: black;
 	}
 
 	tr:nth-child(odd) {
@@ -166,5 +198,16 @@ only screen and (max-width: 960px),
 	table.most-frequent td:nth-of-type(1):before { content: "Calls"; }
 	table.most-frequent td:nth-of-type(2):before { content: "Total (s)"; }
 	table.most-frequent td:nth-of-type(3):before { content: "Mean (ms)"; }
+
+	table.long-running td:nth-of-type(1):before { content: "Application Name"; }
+	table.long-running td:nth-of-type(2):before { content: "Start Time"; }
+	table.long-running td:nth-of-type(3):before { content: "State"; }
+	table.long-running td:nth-of-type(4):before { content: "Query"; }
+
+	table.all-active td:nth-of-type(1):before { content: "Application Name"; }
+	table.all-active td:nth-of-type(2):before { content: "Start Time"; }
+	table.all-active td:nth-of-type(3):before { content: "State"; }
+	table.all-active td:nth-of-type(4):before { content: "Query"; }
+
 
 }
