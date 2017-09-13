@@ -43,13 +43,10 @@ a:hover {
 	overflow: hidden;
 	background-color: darkcyan;
 	display: flex;
-	 /*y-axis defined*/
-	align-items: flex-start;
 }
 
 .menu_item{
 	background-color: hide;
-	justify-content: flex-start;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	border-radius: 3px;
@@ -130,15 +127,12 @@ only screen and (max-width: 960px),
 	}
 
 	a:hover {
-		background-color: gainsboro;
-		justify-content: space-between;
-		padding: 7px 10px;
-		text-align: start;
+		padding: 10px;
+		text-align: left;
 		font-weight: 500;
 		width: auto;
 		margin: -10px;
-		border-top-left-radius: 10px;
-		border-top-right-radius: 10px;
+		border-radius: 30px;
 		overflow: hidden;
 		text-decoration: none;
 		display: block;
@@ -150,17 +144,16 @@ only screen and (max-width: 960px),
 		left: -9999px;
 	}
 
-	.menu_item {
-		font-size: 75%;
-		text-align: left;
-		margin: 5px 0px 0px 0px;
+	.parent {
+		white-space: nowrap;
+		overflow-x: auto;
 	}
 
-	/*#div2 {*/
-		/*border: none;*/
-		/*margin-bottom: 12px;*/
-		/*overflow-x: auto;*/
-	/*}*/
+	.menu_item {
+		padding: 10px;
+		display: inline-block;
+		margin: 5px;
+	}
 
 	td {
 		border: none;
