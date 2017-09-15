@@ -34,6 +34,11 @@ class PGPerformance < Sinatra::Base
 		}
 	end
 
+	# monitoring aliveness endpoint
+	get '/heartbeat' do
+		'alive'
+	end
+
 	get '/total-time' do
 		erb :total_time, :layout => :default, locals: {
 			total_time_rows: total_time_rows
