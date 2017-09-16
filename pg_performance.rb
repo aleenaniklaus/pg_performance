@@ -14,6 +14,7 @@ class PGPerformance < Sinatra::Base
 	configurability( :pgperformance ) do
 		setting :db_uri
 		setting :target_db
+		setting :root_url
 	end
 
 	def self::db

@@ -2,3 +2,4 @@
 pgperformance:
   db_uri: postgres://user:pass@mydb.com/mydb
   target_db: 'my_db'
+  root_url: 'my_url_path'
