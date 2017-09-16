@@ -29,7 +29,7 @@ class PGPerformance < Sinatra::Base
 		Configurability.configure_objects( config )
 	end
 
-	get '/' do
+	get '/mean-time' do
 		erb :index, :layout => :default, locals: {
 			mean_time_rows: mean_time_rows
 		}
