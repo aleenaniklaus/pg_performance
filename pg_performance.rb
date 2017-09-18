@@ -29,17 +29,18 @@ class PGPerformance < Sinatra::Base
 		Configurability.configure_objects( config )
 	end
 
-	get '/mean-time' do
-		erb :index, :layout => :default, locals: {
-			mean_time_rows: mean_time_rows
-		}
-	end
 
 	# monitoring aliveness endpoint
 	get '/heartbeat' do
 		'alive'
 	end
 
+
+	get '/' do
+		erb :index, :layout => :default, locals: {
+				mean_time_rows: mean_time_rows
+		}
+	end
 	get '/total-time' do
 		erb :total_time, :layout => :default, locals: {
 			total_time_rows: total_time_rows
