@@ -21,7 +21,6 @@ class PGPerformance < Sinatra::Base
 		return @db ||= Sequel.connect( self.db_uri )
 	end
 
-
 	Sinatra::Base.configure do
 		register Sinatra::Reloader
 		config_file = File.join(File.dirname(__FILE__), 'config.yml')
