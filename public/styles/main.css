@@ -35,7 +35,6 @@ a:hover {
 	text-decoration: none;
 }
 
-/*** flex stuff ***/
 
 .parent {
 	border-top-left-radius: 3px;
@@ -58,8 +57,13 @@ a:hover {
 a#refresh_button {
 	background-color: unset;
 }
-
-/*** end ***/
+button {
+	font-family: Trebuchet MS;
+	color: white;
+	background-color: orange;
+	border-style: none;
+	border-color: white;
+}
 
 /* Although there are no images in the app, this is added to secure correctness when sizing down browser to mobile
    in the event that someone does at an image to the app  */
