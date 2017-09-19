@@ -45,7 +45,7 @@ a:hover {
 	display: flex;
 }
 
-.menu_item{
+.menu_item {
 	background-color: hide;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
@@ -54,6 +54,9 @@ a:hover {
 	padding: 10px 0px 0px 14px;
 	text-align: left;
 	font-weight: 500px;
+}
+a#refresh_button {
+	background-color: unset;
 }
 
 /*** end ***/

@@ -1,5 +1,8 @@
-<header role="banner">All Active Running</header>
+<header role="banner">All Active Running
+  <a id="refresh_button" href=""><button>Refresh</button></a>
+</header>
   <%= erb :menu %>
+
 <table class="all-active">
   <thead>
     <tr>
@@ -9,13 +12,24 @@
       <th>Query</th>
     </tr>
   </thead>
-
-  <% all_active_rows.each do |row| %>
-      <tr>
-        <td><%= row[:application_name] %></td>
-        <td><%= row[:query_start] %></td>
-        <td><%= row[:state] %></td>
-        <td><%= sql(row[:query]) %></td>
-      </tr>
-  <% end %>
+  <tbody>
+    <% all_active_rows.each do |row| %>
+        <tr>
+          <td><%= row[:application_name] %></td>
+          <td><%= row[:query_start] %></td>
+          <td><%= row[:state] %></td>
+          <td><%= sql(row[:query]) %></td>
+        </tr>
+    <% end %>
+  </tbody>
 </table>
+
+
+<script type="text/javascript">
+    $("document").ready(function() {
+      $(document).pjax("#refreshButton", "#pjax-container");
+    });
+
+    <!-- End of JQuery Code -->
+
+</script>

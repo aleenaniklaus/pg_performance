@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require 'sinatra/json'
 require 'sequel'
 require 'pg'
 require 'rouge'
@@ -53,9 +54,9 @@ class PGPerformance < Sinatra::Base
 	end
 
 	get '/all-active' do
-		erb :all_active, :layout => :default, locals: {
-				all_active_rows: all_active_rows
-		}
+		layout = request['X-PJAX'] ? false : :default
+
+		erb :all_active, :layout => layout
 	end
 
 	get '/long-running' do
@@ -63,6 +64,7 @@ class PGPerformance < Sinatra::Base
 				long_running_rows: long_running_rows
 		}
 	end
+
 
 	helpers do
 
