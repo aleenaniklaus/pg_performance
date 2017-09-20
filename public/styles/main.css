@@ -45,7 +45,7 @@ a:hover {
 }
 
 .menu_item {
-	background-color: hide;
+	background-color: unset;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	border-radius: 3px;
@@ -56,13 +56,13 @@ a:hover {
 }
 a#refresh_button {
 	background-color: unset;
+	display: initial;
 }
 button {
 	font-family: Trebuchet MS;
 	color: white;
 	background-color: orange;
 	border-style: none;
-	border-color: white;
 }
 
 /* Although there are no images in the app, this is added to secure correctness when sizing down browser to mobile
@@ -133,12 +133,9 @@ only screen and (max-width: 960px),
 		display:block;
 	}
 
-	.parent {
-		background-color: white;
-	}
-
-	.menu_item{
-		background-color: hide;
+	header {
+		font-size: x-large;
+		text-align: center;
 	}
 
 	a:hover {
@@ -162,6 +159,7 @@ only screen and (max-width: 960px),
 	}
 
 	.parent {
+		background-color: white;
 		white-space: nowrap;
 		overflow-x: auto;
 	}
@@ -170,6 +168,7 @@ only screen and (max-width: 960px),
 		padding: 10px;
 		display: inline-block;
 		margin: 5px;
+		background-color: unset;
 	}
 
 	td {
@@ -196,12 +195,12 @@ only screen and (max-width: 960px),
 	td:nth-of-type(1):before { content: "Total (s)"; }
 	td:nth-of-type(2):before { content: "Calls"; }
 	td:nth-of-type(3):before { content: "Mean (ms)"; }
-	td:nth-of-type(4):before { content: "Standard Deviation (ms)"; }
+	td:nth-of-type(4):before { content: "SD (ms)"; }
 	td:nth-of-type(5):before { content: "Query"; }
 
 	table.mean-time td:nth-of-type(1):before { content: "Mean (ms)"; }
 	table.mean-time td:nth-of-type(2):before { content: "Total (s)"; }
-	table.mean-time td:nth-of-type(3):before { content: "Standard Deviation (ms)"; }
+	table.mean-time td:nth-of-type(3):before { content: "SD (ms)"; }
 	table.mean-time td:nth-of-type(4):before { content: "Query"; }
 
 
@@ -209,15 +208,17 @@ only screen and (max-width: 960px),
 	table.most-frequent td:nth-of-type(2):before { content: "Total (s)"; }
 	table.most-frequent td:nth-of-type(3):before { content: "Mean (ms)"; }
 
-	table.long-running td:nth-of-type(1):before { content: "Application Name"; }
+	table.long-running td:nth-of-type(1):before { content: "App Name"; }
 	table.long-running td:nth-of-type(2):before { content: "Start Time"; }
 	table.long-running td:nth-of-type(3):before { content: "State"; }
 	table.long-running td:nth-of-type(4):before { content: "Query"; }
 
-	table.all-active td:nth-of-type(1):before { content: "Application Name"; }
+	table.all-active td:nth-of-type(1):before { content: "App Name"; }
 	table.all-active td:nth-of-type(2):before { content: "Start Time"; }
 	table.all-active td:nth-of-type(3):before { content: "State"; }
 	table.all-active td:nth-of-type(4):before { content: "Query"; }
 
 
 }
+
+
