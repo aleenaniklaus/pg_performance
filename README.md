@@ -1,6 +1,6 @@
 # pgPerformance
 
-###### Track slow queries such as slowest per total time, slowest per mean time, most frequent queries, long running queries (greater than 1 second long) and all active queries. pgPerformance is made responsively and will resize for any mobile device nicely. pgPerformance was created after a 3 month long internship a Cozy.co tracking slow queries the hard way - tailing the `Postgres.log` file. This app is an aggregation of all queries, for as long as your `pg_stat_statements` and `pg_stat_activity` tables have been loaded, giving better, more accurate information than the `Postgres.log` which is often times machine dependent.  If there are descrepencies or concerns, feel free to contact or open a pull request on it. 
+###### Track slow and problem queries such as slowest per total time, slowest per mean time, most frequent queries, long running queries (greater than 1 second long) and all active queries. pgPerformance is made responsively and will resize for any mobile device nicely. It was inspired after a 3 month long internship a Cozy.co tracking slow queries the hard way - tailing the `Postgres.log` file. This app is an aggregation of all queries, for as long as your `pg_stat_statements` and `pg_stat_activity` tables have been loaded; giving better, more accurate information than the `Postgres.log` which is often times machine dependent.  If there are descrepencies or concerns, feel free to contact or open a pull request on it. 
 ##### By Aleena Watson
 
 ### What you need:
