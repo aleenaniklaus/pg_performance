@@ -5,7 +5,7 @@
 
 ### What you need:
 * `PostgreSQL` database 
-* Load [pg_stat_statements](https://www.postgresql.org/docs/current/static/pgstatstatements.html) <= This is a crutial step, although you have `Postgres`, `pg_stat_statements` table still needs to be configured in order for the app to work!
+* Load [pg_stat_statements](https://www.postgresql.org/docs/current/static/pgstatstatements.html). This is a crutial step, although you have `Postgres`, `pg_stat_statements` table still needs to be configured in order for the app to work!
 * Install `pgPerformance` and enter your database information accordingly in `config.yml` _(see example `.yml` file included)_
 
 
